@@ -90,8 +90,10 @@ autoload -Uz compinit && compinit
 # Rbenv Init
 #
 
-eval "$(rbenv init -)"
-path=("$HOME/.rbenv/bin" $path)
+if type rbenv > /dev/null; then
+    eval "$(rbenv init -)"
+    path=("$HOME/.rbenv/bin" $path)
+fi
 
 #
 # Node Init
