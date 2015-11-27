@@ -73,6 +73,12 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+# Backward deletion keybinds in insert mode.
+bindkey "^?" backward-delete-char
+bindkey "^W" backward-kill-word 
+bindkey "^H" backward-delete-char
+bindkey "^U" backward-kill-line   
+
 #
 # Plugin Init
 #
