@@ -1,12 +1,9 @@
-#
-# Change Directory Shorthand
-# You can also directly type a folder name to cd into it.
-#
+# Change directory shorthand.
 setopt autocd
 
-# 
+################################################################################
 # Bind <tab> to cd Command
-#
+################################################################################
 
 first-tab() {
     if [[ $#BUFFER == 0 ]]; then
@@ -21,18 +18,18 @@ first-tab() {
 zle -N first-tab
 bindkey '^I' first-tab
 
-#
+################################################################################
 # History
-#
+################################################################################
 
 HISTFILE=$HOME/.zhistory
 HISTSIZE=2000
 SAVEHIST=$HISTSIZE
 setopt HIST_IGNORE_ALL_DUPS
 
-#
+################################################################################
 # Command Aliases
-#
+################################################################################
 
 alias minify='minify --no-comments'
 alias tmux="tmux -2"
@@ -40,9 +37,9 @@ alias grep="grep --color=auto"
 alias rspec="rspec --color"
 # alias ls="ls --color=auto"
 
-#
+################################################################################
 # Prompt
-#
+################################################################################
 
 # Left prompt.
 PROMPT="%n@%m %1~ $ "
@@ -53,11 +50,12 @@ setopt PROMPT_CR
 setopt PROMPT_SP
 export PROMPT_EOL_MARK=""
 
-# 
+################################################################################
 # Vim Mode Keybinds
-#
+################################################################################
 
-# Decrease lag in vim mode: This reduces the timeout between accepted keystrokes to 1ms.
+# Decrease lag in vim mode: This reduces the timeout between accepted keystrokes
+# to 1ms.
 KEYTIMEOUT=1
 # vim mode
 bindkey -v
@@ -79,25 +77,25 @@ bindkey "^W" backward-kill-word
 bindkey "^H" backward-delete-char
 bindkey "^U" backward-kill-line   
 
-#
+################################################################################
 # Plugin Init
-#
+################################################################################
 
 plugins=(git github history-substring-search)
 autoload -Uz compinit && compinit 
 
-#
+################################################################################
 # Rbenv Init
-#
+################################################################################
 
 if type rbenv > /dev/null; then
     eval "$(rbenv init -)"
     path=("$HOME/.rbenv/bin" $path)
 fi
 
-#
+################################################################################
 # Node Init
-#
+################################################################################
 
 # Add node modules to $PATH
 path+=('/usr/local/lib/node_modules')
