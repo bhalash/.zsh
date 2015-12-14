@@ -4,8 +4,10 @@ setopt autocd
 # Decrease lag in vim mode: This reduces the timeout between accepted keystrokes
 # to 1ms.
 KEYTIMEOUT=1
+
 # vim mode
 bindkey -v
+
 # Bind ctrl + r to history search.
 bindkey "^R" history-incremental-search-backward
 
@@ -14,10 +16,12 @@ bindkey "^R" history-incremental-search-backward
 ################################################################################
 
 # Left prompt.
+# user@hostname folder $
 PROMPT="%n@%m %1~ $ "
 
 function zle-line-init zle-keymap-select {
     # Right prompt.
+    # [i/n] (by mode).
     RPROMPT="${${KEYMAP/vicmd/[n]}/(main|viins)/[i]}"
     zle reset-prompt
 }
