@@ -19,6 +19,21 @@ zle -N first-tab
 bindkey '^I' first-tab
 
 ################################################################################
+# cd to Git Project Root Folder
+################################################################################
+
+git-root() {
+    if [[ $(git rev-parse 2> /dev/null; echo $?) == 0 ]]; then
+        builtin cd "$(git rev-parse --show-toplevel)"
+    else
+        echo "cd: not a git project: ${PWD}"
+    fi
+}
+
+# zle -N git-root
+# bindkey '^G' git-root
+
+################################################################################
 # History
 ################################################################################
 
