@@ -82,7 +82,7 @@ bindkey '^I' first-tab
 ################################################################################
 
 git-root() {
-    if [[ $(git rev-parse 2> /dev/null) == 0 ]]; then
+    if $(git rev-parse 2> /dev/null); then
         builtin cd "$(git rev-parse --show-toplevel)"
     else
         echo "cd: not a git project: ${PWD}"
