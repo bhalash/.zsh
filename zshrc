@@ -1,5 +1,7 @@
-# Change directory shorthand.
 setopt autocd
+setopt short_loops
+setopt function_arg_zero
+autoload colors; colors
 
 # Decrease lag in vim mode: This reduces the timeout between accepted keystrokes
 # to 1ms.
@@ -111,6 +113,6 @@ bindkey "^U" backward-kill-line
 ################################################################################
 
 alias tmux="tmux -2"
-alias grep="grep --color=auto"
-alias rspec="rspec --color"
+# alias grep="grep --color=auto"
+# alias rspec="rspec --color"
 alias rot13="tr a-zA-Z n-za-mN-ZA-M <<<"
