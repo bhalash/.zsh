@@ -35,8 +35,6 @@ alias minify='minify --no-comments'
 alias tmux="tmux -2"
 alias grep="grep --color=auto"
 alias rspec="rspec --color"
-# alias ls="ls --color=auto"
-alias groot="cd $(git rev-parse --show-toplevel)"
 
 ################################################################################
 # Prompt
