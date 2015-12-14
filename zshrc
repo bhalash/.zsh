@@ -73,16 +73,16 @@ zle -N zle-keymap-select
 
 # Backward deletion keybinds in insert mode.
 bindkey "^?" backward-delete-char
-bindkey "^W" backward-kill-word 
+bindkey "^W" backward-kill-word
 bindkey "^H" backward-delete-char
-bindkey "^U" backward-kill-line   
+bindkey "^U" backward-kill-line
 
 ################################################################################
 # Plugin Init
 ################################################################################
 
 plugins=(git github history-substring-search)
-autoload -Uz compinit && compinit 
+autoload -Uz compinit && compinit
 
 ################################################################################
 # Rbenv Init
