@@ -113,3 +113,4 @@ bindkey "^U" backward-kill-line
 alias tmux="tmux -2"
 alias grep="grep --color=auto"
 alias rspec="rspec --color"
+alias rot13="tr a-zA-Z n-za-mN-ZA-M <<<"
