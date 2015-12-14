@@ -10,6 +10,25 @@ bindkey -v
 bindkey "^R" history-incremental-search-backward
 
 ################################################################################
+# Prompt
+################################################################################
+
+# Left prompt.
+PROMPT="%n@%m %1~ $ "
+
+function zle-line-init zle-keymap-select {
+    # Right prompt.
+    RPROMPT="${${KEYMAP/vicmd/[n]}/(main|viins)/[i]}"
+    zle reset-prompt
+}
+
+# Remove annoying "%" sign after certain outputs.
+# See: https://stackoverflow.com/questions/13660636/what-is-percent-tilde-in-zsh
+setopt PROMPT_CR
+setopt PROMPT_SP
+export PROMPT_EOL_MARK=""
+
+################################################################################
 # History
 ################################################################################
 
@@ -71,27 +90,8 @@ git-root() {
 }
 
 ################################################################################
-# Prompt
-################################################################################
-
-# Left prompt.
-PROMPT="%n@%m %1~ $ "
-
-# Remove annoying "%" sign after certain outputs.
-# See: https://stackoverflow.com/questions/13660636/what-is-percent-tilde-in-zsh
-setopt PROMPT_CR
-setopt PROMPT_SP
-export PROMPT_EOL_MARK=""
-
-################################################################################
 # Vim Mode Keybinds
 ################################################################################
-
-function zle-line-init zle-keymap-select {
-    # Right prompt.
-    RPROMPT="${${KEYMAP/vicmd/[n]}/(main|viins)/[i]}"
-    zle reset-prompt
-}
 
 zle -N zle-line-init
 zle -N zle-keymap-select
