@@ -106,7 +106,6 @@ bindkey "^U" backward-kill-line
 # Command Aliases
 ################################################################################
 
-alias minify='minify --no-comments'
 alias tmux="tmux -2"
 alias grep="grep --color=auto"
 alias rspec="rspec --color"
