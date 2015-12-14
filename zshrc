@@ -26,6 +26,22 @@ plugins=(git github history-substring-search)
 autoload -Uz compinit && compinit
 
 ################################################################################
+# Rbenv Init
+################################################################################
+
+if type rbenv > /dev/null; then
+    eval "$(rbenv init -)"
+    path=("$HOME/.rbenv/bin" $path)
+fi
+
+################################################################################
+# Node Init
+################################################################################
+
+# Add node modules to $PATH
+path+=('/usr/local/lib/node_modules')
+
+################################################################################
 # Bind <tab> to cd Command
 ################################################################################
 
@@ -53,15 +69,6 @@ git-root() {
         echo "cd: not a git project: ${PWD}"
     fi
 }
-
-################################################################################
-# Command Aliases
-################################################################################
-
-alias minify='minify --no-comments'
-alias tmux="tmux -2"
-alias grep="grep --color=auto"
-alias rspec="rspec --color"
 
 ################################################################################
 # Prompt
@@ -96,17 +103,10 @@ bindkey "^H" backward-delete-char
 bindkey "^U" backward-kill-line
 
 ################################################################################
-# Rbenv Init
+# Command Aliases
 ################################################################################
 
-if type rbenv > /dev/null; then
-    eval "$(rbenv init -)"
-    path=("$HOME/.rbenv/bin" $path)
-fi
-
-################################################################################
-# Node Init
-################################################################################
-
-# Add node modules to $PATH
-path+=('/usr/local/lib/node_modules')
+alias minify='minify --no-comments'
+alias tmux="tmux -2"
+alias grep="grep --color=auto"
+alias rspec="rspec --color"
