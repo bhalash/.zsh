@@ -17,12 +17,12 @@ bindkey -v
 ################################################################################
 
 # Left prompt.
-# user@hostname folder $
+# user@hostname folder $ ...
 PROMPT='%n@%m %1~ $ '
 
 function zle-line-init zle-keymap-select {
     # Right prompt.
-    # [i/n] (by mode).
+    # ... [i/n]
     RPROMPT="${${KEYMAP/vicmd/[n]}/(main|viins)/[i]}"
     zle reset-prompt
 }
