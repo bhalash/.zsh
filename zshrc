@@ -1,7 +1,9 @@
 setopt autocd
 setopt short_loops
 setopt function_arg_zero
-autoload colors; colors
+
+autoload colors
+colors
 
 # Decrease lag in vim mode: This reduces the timeout between accepted keystrokes
 # to 1ms.
@@ -11,7 +13,7 @@ KEYTIMEOUT=1
 bindkey -v
 
 # Bind ctrl + r to history search.
-bindkey "^R" history-incremental-search-backward
+bindkey '^R' history-incremental-search-backward
 
 ################################################################################
 # Prompt
@@ -19,7 +21,7 @@ bindkey "^R" history-incremental-search-backward
 
 # Left prompt.
 # user@hostname folder $
-PROMPT="%n@%m %1~ $ "
+PROMPT='%n@%m %1~ $ '
 
 function zle-line-init zle-keymap-select {
     # Right prompt.
@@ -32,7 +34,7 @@ function zle-line-init zle-keymap-select {
 # See: https://stackoverflow.com/questions/13660636/what-is-percent-tilde-in-zsh
 setopt PROMPT_CR
 setopt PROMPT_SP
-export PROMPT_EOL_MARK=""
+export PROMPT_EOL_MARK=''
 
 ################################################################################
 # History
@@ -41,7 +43,11 @@ export PROMPT_EOL_MARK=""
 HISTFILE=$HOME/.zhistory
 HISTSIZE=2000
 SAVEHIST=$HISTSIZE
-setopt HIST_IGNORE_ALL_DUPS
+
+setopt hist_find_no_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_verify
 
 ################################################################################
 # Plugin Init
@@ -96,6 +102,21 @@ git-root() {
 }
 
 ################################################################################
+# See n Biggest Files
+################################################################################
+
+big-files() {
+    count=10
+
+    if [[ $1 =~ ^[0-9]+$ ]]; then
+        count=$1
+    fi
+
+    du -axh | sort -n | tail -n ${count} | sort -r
+}
+
+
+################################################################################
 # Vim Mode Keybinds
 ################################################################################
 
@@ -103,15 +124,16 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 
 # Backward deletion keybinds in insert mode.
-bindkey "^?" backward-delete-char
-bindkey "^W" backward-kill-word
-bindkey "^H" backward-delete-char
-bindkey "^U" backward-kill-line
+bindkey '^?' backward-delete-char
+bindkey '^W' backward-kill-word
+bindkey '^H' backward-delete-char
+bindkey '^U' backward-kill-line
 
 ################################################################################
 # Command Aliases
 ################################################################################
 
-alias tmux="tmux -2"
-alias rot13="tr a-zA-Z n-za-mN-ZA-M <<<"
+alias tmux='tmux -2'
+alias rot13='tr a-zA-Z n-za-mN-ZA-M <<<'
+alias bf="big-files"
 alias gr='git-root'
