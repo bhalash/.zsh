@@ -12,9 +12,6 @@ KEYTIMEOUT=1
 # vim mode
 bindkey -v
 
-# Bind ctrl + r to history search.
-bindkey '^R' history-incremental-search-backward
-
 ################################################################################
 # Prompt
 ################################################################################
@@ -48,6 +45,9 @@ setopt hist_find_no_dups
 setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_verify
+
+# Bind ctrl + r to history search.
+bindkey '^R' history-incremental-search-backward
 
 ################################################################################
 # Plugin Init
@@ -114,7 +114,6 @@ big-files() {
 
     du -axh | sort -n | tail -n ${count} | sort -r
 }
-
 
 ################################################################################
 # Vim Mode Keybinds
