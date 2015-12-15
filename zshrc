@@ -134,5 +134,5 @@ bindkey '^U' backward-kill-line
 
 alias tmux='tmux -2'
 alias rot13='tr a-zA-Z n-za-mN-ZA-M <<<'
-alias bf="big-files"
+alias bf='big-files'
 alias gr='git-root'
