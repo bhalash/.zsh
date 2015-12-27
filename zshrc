@@ -1,6 +1,22 @@
+################################################################################
+# ZSH Options
+################################################################################
+
+# cd with just directory name.
 setopt autocd
+
+# Permit shorter loop syntax.
 setopt short_loops
 setopt function_arg_zero
+
+# Resolve symlinks.
+setopt chase_links
+
+# No beeps.
+unsetopt beep
+
+# Safe rm.
+unsetopt rm_star_silent
 
 autoload colors
 colors
@@ -55,6 +71,7 @@ setopt hist_find_no_dups
 setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_verify
+unsetopt hist_beep
 
 # Bind ctrl + r to history search.
 bindkey '^R' history-incremental-search-backward
