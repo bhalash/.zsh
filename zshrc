@@ -165,3 +165,4 @@ alias bf='big-files'
 alias gr='git-root'
 
 alias r_reset='RAILS_ENV=test rake db:drop db:create db:migrate'
+alias r_console='RAILS_ENV=test script/console'
