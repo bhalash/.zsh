@@ -164,5 +164,13 @@ alias rot13='tr a-zA-Z n-za-mN-ZA-M <<<'
 alias bf='big-files'
 alias gr='git-root'
 
+################################################################################
+# Workd Alias Commands
+################################################################################
+
+r-console() {
+    RAILS_ENV=test "$(git rev-parse --show-toplevel)/script/console"
+}
+
 alias r_reset='RAILS_ENV=test rake db:drop db:create db:migrate'
-alias r_console='RAILS_ENV=test script/console'
+alias r_console='rails-console'
