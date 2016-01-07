@@ -173,4 +173,4 @@ r-console() {
 }
 
 alias r_reset='RAILS_ENV=test rake db:drop db:create db:migrate'
-alias r_console='rails-console'
+alias r_console='r-console'
