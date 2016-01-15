@@ -165,7 +165,7 @@ alias bf='big-files'
 alias gr='git-root'
 
 ################################################################################
-# Workd Alias Commands
+# Work Alias Commands
 ################################################################################
 
 r-console() {
@@ -174,3 +174,13 @@ r-console() {
 
 alias r_reset='RAILS_ENV=test rake db:drop db:create db:migrate'
 alias r_console='r-console'
+
+################################################################################
+# Work S3 Credentials
+################################################################################
+
+s3_credentials="${HOME}/.aws_s3_credentials"
+
+if [[ -f $s3_credentials ]]; then
+    source $s3_credentials
+fi
