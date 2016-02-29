@@ -188,6 +188,7 @@ r-console() {
 
 alias r_reset='RAILS_ENV=test rake db:drop db:create db:migrate'
 alias r_console='r-console'
+alias be='bundle exec'
 
 ################################################################################
 # Work S3 Credentials
