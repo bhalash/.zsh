@@ -42,11 +42,11 @@ fi
 # Prompt
 ################################################################################
 
-# Left prompt.
-# user@hostname folder $ ...
-PROMPT='%n@%m %1~ $ '
-
 function zle-line-init zle-keymap-select {
+    # Left prompt.
+    # user@hostname folder $ ...
+    PROMPT='%n@%m %1~ $ '
+
     # Right prompt.
     # ... [i/n]
     RPROMPT="${${KEYMAP/vicmd/[n]}/(main|viins)/[i]}"
