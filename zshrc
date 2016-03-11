@@ -182,12 +182,7 @@ alias grep='grep --color=auto'
 # Work Alias Commands
 ################################################################################
 
-r-console() {
-    RAILS_ENV=test "$(git rev-parse --show-toplevel)/script/console"
-}
-
-alias r_reset='RAILS_ENV=test rake db:drop db:create db:migrate'
-alias r_console='r-console'
+alias r_reset='RAILS_ENV=test bundle exec rake db:drop db:create db:migrate'
 alias be='bundle exec'
 alias ber='clear; bundle exec rspec'
 
