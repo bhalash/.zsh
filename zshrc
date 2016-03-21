@@ -185,6 +185,7 @@ alias grep='grep --color=auto'
 alias be='bundle exec'
 alias bereset='RAILS_ENV=test be rake db:drop db:create db:migrate'
 alias ber='clear; be rspec'
+alias bec='RAILS_ENV=development rails c'
 
 ################################################################################
 # Work S3 Credentials
