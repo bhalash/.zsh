@@ -2,6 +2,8 @@
 # ZSH Options
 ################################################################################
 
+export TERM=xterm-256color
+
 # cd with just directory name.
 setopt autocd
 
