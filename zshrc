@@ -44,14 +44,19 @@ fi
 # Prompt
 ################################################################################
 
-function zle-line-init zle-keymap-select {
+mark-prompt() {
     # Left prompt.
     # user@hostname folder $ ...
     PROMPT='%n@%m %1~ $ '
-
     # Right prompt.
     # ... [i/n]
     RPROMPT="${${KEYMAP/vicmd/[n]}/(main|viins)/[i]}"
+}
+
+mark-prompt
+
+zle-line-init zle-keymap-select() {
+    mark-prompt
     zle reset-prompt
 }
 
