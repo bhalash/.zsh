@@ -198,9 +198,3 @@ s3_credentials="${HOME}/.aws_s3_credentials"
 if [[ -f $s3_credentials ]]; then
     source $s3_credentials
 fi
-
-################################################################################
-# iTerm 2 Integration
-################################################################################
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
