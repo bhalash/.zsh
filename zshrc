@@ -74,6 +74,7 @@ HISTFILE=$HOME/.zhistory
 HISTSIZE=2000
 SAVEHIST=$HISTSIZE
 
+setopt inc_append_history
 setopt hist_find_no_dups
 setopt hist_ignore_dups
 setopt hist_ignore_space
