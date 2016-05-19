@@ -196,6 +196,11 @@ alias grep='grep --color=auto -E'
 # Work Alias Commands
 ################################################################################
 
+if [[ $(uname) -eq "Darwin" ]]; then
+    # See: https://stackoverflow.com/questions/33817282/
+    alias du=gdu
+fi
+
 alias be='bundle exec'
 alias bereset='RAILS_ENV=test be rake db:drop db:create db:migrate'
 alias ber='clear; be rspec'
