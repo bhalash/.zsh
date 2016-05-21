@@ -89,7 +89,7 @@ bindkey '^R' history-incremental-search-backward
 ################################################################################
 
 plugins=(git github history-substring-search)
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -u
 
 ################################################################################
 # Rbenv Init
