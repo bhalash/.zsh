@@ -34,7 +34,7 @@ bindkey -v
 # Editor
 ################################################################################
 
-if [[ -z "$EDITOR" == 0 ]] then
+if [[ -z "$EDITOR" ]]; then
     export EDITOR='/usr/bin/env vim'
 fi
 
