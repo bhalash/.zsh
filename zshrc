@@ -209,10 +209,7 @@ if [[ $(uname) -eq "Darwin" ]]; then
     alias du=gdu
 fi
 
-alias be='bundle exec'
-alias bereset='RAILS_ENV=test be rake db:drop db:create db:migrate'
-alias ber='clear; be rspec'
-alias bec='RAILS_ENV=development rails c'
+alias trans="i18n-tasks add-missing -v '[NYI] MISSING TRANSLATION' da de es hu it ko ms nl pl ru se tr zh_CN zh_TW"
 
 ################################################################################
 # Work S3 Credentials
