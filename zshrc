@@ -204,7 +204,7 @@ alias grep='grep --color=auto -E'
 # Work Alias Commands
 ################################################################################
 
-if [[ $(uname) -eq "Darwin" ]]; then
+if [[ $(uname) == "Darwin" ]]; then
     # See: https://stackoverflow.com/questions/33817282/
     alias du=gdu
 fi
