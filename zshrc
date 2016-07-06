@@ -198,7 +198,7 @@ alias tmux='tmux -2'
 alias rot13='tr a-zA-Z n-za-mN-ZA-M <<<'
 alias bf='big-files'
 alias gr='git-root'
-alias grep='grep --color=auto -E'
+alias grep='clear; grep --color=auto -E'
 
 ################################################################################
 # Work Alias Commands
