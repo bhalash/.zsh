@@ -198,21 +198,19 @@ alias tmux='tmux -2'
 alias rot13='tr a-zA-Z n-za-mN-ZA-M <<<'
 alias bf='big-files'
 alias gr='git-root'
-alias grep='grep --color=auto -E'
+alias grep='clear; grep --color=auto -E'
 
 ################################################################################
 # Work Alias Commands
 ################################################################################
 
-if [[ $(uname) -eq "Darwin" ]]; then
+if [[ $(uname) == "Darwin" ]]; then
     # See: https://stackoverflow.com/questions/33817282/
     alias du=gdu
 fi
 
-alias be='bundle exec'
-alias bereset='RAILS_ENV=test be rake db:drop db:create db:migrate'
-alias ber='clear; be rspec'
-alias bec='RAILS_ENV=development rails c'
+alias trans="i18n-tasks add-missing -v '[NYI] MISSING TRANSLATION' da de es hu it ko ms nl pl ru se tr zh_CN zh_TW"
+alias routes='clear; rake routes | less'
 
 ################################################################################
 # Work S3 Credentials
