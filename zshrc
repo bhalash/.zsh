@@ -20,11 +20,10 @@ unsetopt beep
 # Safe rm.
 unsetopt rm_star_silent
 
-autoload colors
-colors
+# Enable colour output.
+autoload colors && colors
 
-# Decrease lag in vim mode: This reduces the timeout between accepted keystrokes
-# to 1ms.
+# Decrease lag in vim mode: This reduces the timeout between accepted keystrokes to 1ms.
 KEYTIMEOUT=1
 
 # vim mode
@@ -53,12 +52,13 @@ fi
 ################################################################################
 
 mark-prompt() {
-    # Left prompt.
-    # user@hostname folder $ ...
-    PROMPT='%n@%m %1~ $ '
-    # Right prompt.
-    # ... [i/n]
-    RPROMPT="${${KEYMAP/vicmd/[n]}/(main|viins)/[i]}"
+    # Left prompt: user@hostname folder $ ...
+    # PROMPT='%n@%m %1~ $ '
+    PROMPT="${${KEYMAP/vicmd/[n]}/(main|viins)/[i]} %n@%m %1~ $ "
+
+    # Right prompt: ... [i/n]
+    # RPROMPT="${${KEYMAP/vicmd/[n]}/(main|viins)/[i]}"
+    RPROMPT=""
 }
 
 mark-prompt
