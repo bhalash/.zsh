@@ -51,13 +51,32 @@ fi
 # Prompt
 ################################################################################
 
-mark-prompt() {
-    # Left prompt: user@hostname folder $ ...
-    # PROMPT='%n@%m %1~ $ '
-    PROMPT="${${KEYMAP/vicmd/[n]}/(main|viins)/[i]} %n@%m %1~ $ "
+user-prompt() {
+    USER_PROMPT="%n@%m"
 
-    # Right prompt: ... [i/n]
-    # RPROMPT="${${KEYMAP/vicmd/[n]}/(main|viins)/[i]}"
+    if [[ $(id -u) == 0 ]]; then
+        # Red if root.
+        USER_PROMPT="%F{1}%n@%m%f"
+    fi
+
+    echo $USER_PROMPT
+}
+
+vi-prompt() {
+    VI_NORMAL="[%F{2}n%f]"
+    VI_INSERT="[%F{3}i%f]"
+    VI_PROMPT="${${KEYMAP/vicmd/${VI_NORMAL}}/(main|viins)/${VI_INSERT}}"
+    echo $VI_PROMPT
+}
+
+dir-prompt() {
+    DIR_PROMPT="%1~"
+    echo $DIR_PROMPT
+}
+
+mark-prompt() {
+    PROMPT="%B$(vi-prompt) $(user-prompt):$(dir-prompt) > %b"
+    # Right prompt:
     RPROMPT=""
 }
 
