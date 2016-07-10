@@ -64,10 +64,10 @@ user-prompt-color() {
 #
 
 user-prompt() {
-    USER_PROMPT=$(user-prompt-color '%m' 246)
+    USER_PROMPT=$(user-prompt-color '%m' ${1:-246})
 
     if [[ $(id -u) == 0 ]]; then
-        USER_PROMPT=$(user-prompt-color '%m' 15)
+        USER_PROMPT=$(user-prompt-color '%m' ${2:-15})
     fi
 
     echo "${USER_PROMPT}"
@@ -78,7 +78,7 @@ user-prompt() {
 #
 
 host-prompt() {
-    echo $(user-prompt-color '%n' 246)
+    echo $(user-prompt-color '%n' ${1:-246})
 }
 
 #
@@ -86,11 +86,11 @@ host-prompt() {
 #
 
 vi-prompt() {
-    VI_BEFORE=$(user-prompt-color '[' 246)
-    VI_AFTER=$(user-prompt-color ']' 246)
+    VI_BEFORE=$(user-prompt-color '[' ${1:-246})
+    VI_AFTER=$(user-prompt-color ']' ${2:-246})
 
-    VI_NORMAL="${VI_BEFORE}$(user-prompt-color n 15)${VI_AFTER}"
-    VI_INSERT="${VI_BEFORE}$(user-prompt-color i 15)${VI_AFTER}"
+    VI_NORMAL="${VI_BEFORE}$(user-prompt-color n ${3:-15})${VI_AFTER}"
+    VI_INSERT="${VI_BEFORE}$(user-prompt-color i ${3:-15})${VI_AFTER}"
 
     echo "${${KEYMAP/vicmd/${VI_NORMAL}}/(main|viins)/${VI_INSERT}}"
 }
@@ -100,8 +100,8 @@ vi-prompt() {
 #
 
 dir-prompt() {
-    DIR_PROMPT="%1~"
-    echo $(user-prompt-color $DIR_PROMPT 246)
+    DIR_PROMPT=
+    echo $(user-prompt-color "%1~" ${1:-246})
 }
 
 #
