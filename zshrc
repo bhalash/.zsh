@@ -20,7 +20,7 @@ unsetopt beep
 # Safe rm.
 unsetopt rm_star_silent
 
-# Enable colour output.
+# Enable color output.
 autoload colors && colors
 
 # Decrease lag in vim mode: This reduces the timeout between accepted keystrokes to 1ms.
@@ -51,32 +51,58 @@ fi
 # Prompt
 ################################################################################
 
+#
+# Wrap $1 in a given color, with a fallback to color 15 (white).
+#
+
+user-prompt-color() {
+    echo "%F{${2:-15}}${1}%f"
+}
+
+#
+# Username and hostname.
+#
+
 user-prompt() {
     USER_PROMPT="%n@%m"
+    USER_COLOR=246
 
     if [[ $(id -u) == 0 ]]; then
-        # Red if root.
-        USER_PROMPT="%F{1}%n@%m%f"
+        USER_COLOR=15
     fi
 
-    echo $USER_PROMPT
+    echo $(user-prompt-color $USER_PROMPT $USER_COLOR)
 }
 
+#
+# Set vi-style prompt colors.
+#
+
 vi-prompt() {
-    VI_NORMAL="[%F{2}n%f]"
-    VI_INSERT="[%F{3}i%f]"
-    VI_PROMPT="${${KEYMAP/vicmd/${VI_NORMAL}}/(main|viins)/${VI_INSERT}}"
-    echo $VI_PROMPT
+    VI_BEFORE=$(user-prompt-color '[' 246)
+    VI_AFTER=$(user-prompt-color ']' 246)
+
+    VI_NORMAL="${VI_BEFORE}$(user-prompt-color n 15)${VI_AFTER}"
+    VI_INSERT="${VI_BEFORE}$(user-prompt-color i 15)${VI_AFTER}"
+
+    echo "${${KEYMAP/vicmd/${VI_NORMAL}}/(main|viins)/${VI_INSERT}}"
 }
+
+#
+# Set prompt for current working directory.
+#
 
 dir-prompt() {
     DIR_PROMPT="%1~"
-    echo $DIR_PROMPT
+    echo $(user-prompt-color $DIR_PROMPT 246)
 }
+
+#
+# Bring together all of the above elements for left and right prompts.
+#
 
 mark-prompt() {
     PROMPT="%B$(vi-prompt) $(user-prompt):$(dir-prompt) > %b"
-    # Right prompt:
     RPROMPT=""
 }
 
@@ -110,6 +136,11 @@ unsetopt hist_beep
 
 # Bind ctrl + r to history search.
 bindkey '^R' history-incremental-search-backward
+
+if [[ ! -f $HISTFILE ]]; then
+    # Create $HISTFILE if it does not exist.
+    touch $HISTFILE
+fi
 
 ################################################################################
 # Plugin Init
@@ -235,8 +266,8 @@ alias routes='clear; rake routes | less'
 # Work S3 Credentials
 ################################################################################
 
-s3_credentials="${HOME}/.aws_s3_credentials"
+S3_CREDENTIALS="${HOME}/.aws_s3_credentials"
 
-if [[ -f $s3_credentials ]]; then
-    source $s3_credentials
+if [[ -f $S3_CREDENTIALS ]]; then
+    source $S3_CREDENTIALS
 fi
