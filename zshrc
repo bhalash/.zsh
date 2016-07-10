@@ -60,18 +60,25 @@ user-prompt-color() {
 }
 
 #
-# Username and hostname.
+# Username prompt.
 #
 
 user-prompt() {
-    USER_PROMPT="%n@%m"
-    USER_COLOR=246
+    USER_PROMPT=$(user-prompt-color '%m' 246)
 
     if [[ $(id -u) == 0 ]]; then
-        USER_COLOR=15
+        USER_PROMPT=$(user-prompt-color '%m' 15)
     fi
 
-    echo $(user-prompt-color $USER_PROMPT $USER_COLOR)
+    echo "${USER_PROMPT}"
+}
+
+#
+# Hostname prompt.
+#
+
+host-prompt() {
+    echo $(user-prompt-color '%n' 246)
 }
 
 #
@@ -102,7 +109,7 @@ dir-prompt() {
 #
 
 mark-prompt() {
-    PROMPT="%B$(vi-prompt) $(user-prompt):$(dir-prompt) > %b"
+    PROMPT="%B$(vi-prompt) $(user-prompt)@$(host-prompt):$(dir-prompt) > %b"
     RPROMPT=""
 }
 
