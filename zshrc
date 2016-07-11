@@ -64,10 +64,10 @@ user-prompt-color() {
 #
 
 user-prompt() {
-    USER_PROMPT=$(user-prompt-color '%m' ${1:-246})
+    USER_PROMPT=$(user-prompt-color '%n' ${1:-246})
 
     if [[ $(id -u) == 0 ]]; then
-        USER_PROMPT=$(user-prompt-color '%m' ${2:-15})
+        USER_PROMPT=$(user-prompt-color '%n' ${2:-15})
     fi
 
     echo "${USER_PROMPT}"
@@ -78,7 +78,7 @@ user-prompt() {
 #
 
 host-prompt() {
-    echo $(user-prompt-color '%n' ${1:-246})
+    echo $(user-prompt-color '%m' ${1:-246})
 }
 
 #
@@ -109,7 +109,7 @@ dir-prompt() {
 #
 
 mark-prompt() {
-    PROMPT="%B$(vi-prompt) $(user-prompt)@$(host-prompt):$(dir-prompt) > %b"
+    PROMPT="%B$(vi-prompt) $(user-prompt)@$(host-prompt):$(dir-prompt) $ %b"
     RPROMPT=""
 }
 
