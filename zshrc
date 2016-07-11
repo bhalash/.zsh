@@ -130,7 +130,7 @@ export PROMPT_EOL_MARK=''
 # History
 ################################################################################
 
-HISTFILE=$HOME/.zhistory
+HISTFILE=$HOME/.zsh_history
 HISTSIZE=2000
 SAVEHIST=$HISTSIZE
 
