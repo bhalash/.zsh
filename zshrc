@@ -268,6 +268,7 @@ fi
 
 alias trans="i18n-tasks add-missing -v '[NYI] MISSING TRANSLATION' da de es hu it ko ms nl pl ru se tr zh_CN zh_TW"
 alias routes='clear; rake routes | less'
+alias redis-server='redis-server > /dev/null 2>&1 &'
 
 ################################################################################
 # Work S3 Credentials
