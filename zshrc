@@ -134,12 +134,12 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=2000
 SAVEHIST=$HISTSIZE
 
-setopt inc_append_history
-setopt hist_find_no_dups
-setopt hist_ignore_dups
-setopt hist_ignore_space
-setopt hist_verify
-unsetopt hist_beep
+setopt INC_APPEND_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_VERIFY
+unsetopt HIST_BEEP
 
 # Bind ctrl + r to history search.
 bindkey '^R' history-incremental-search-backward
