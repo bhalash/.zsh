@@ -1,18 +1,1 @@
-#################
-## Plugin Folders
-#################
-
-bundle/*/
-!bundle/Vundle.vim/
-
-#################
-## Plugin-generated Files
-#################
-
-.netrwhist
-
-#################
-## vim 
-#################
-
-*.swp
+work
