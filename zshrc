@@ -255,26 +255,3 @@ alias tmux='tmux -2'
 alias rot13='tr a-zA-Z n-za-mN-ZA-M <<<'
 alias bf='big-files'
 alias gr='git-root'
-
-################################################################################
-# Work Alias Commands
-################################################################################
-
-if [[ $(uname) == "Darwin" ]]; then
-    # See: https://stackoverflow.com/questions/33817282/
-    alias du=gdu
-fi
-
-alias trans="i18n-tasks add-missing -v '[NYI] MISSING TRANSLATION' da de es hu it ko ms nl pl ru se tr zh_CN zh_TW"
-alias routes='clear; rake routes | less'
-alias redis-server='redis-server > /dev/null 2>&1 &'
-
-################################################################################
-# Work S3 Credentials
-################################################################################
-
-S3_CREDENTIALS="${HOME}/.aws_s3_credentials"
-
-if [[ -f $S3_CREDENTIALS ]]; then
-    source $S3_CREDENTIALS
-fi
