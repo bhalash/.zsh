@@ -255,3 +255,9 @@ alias tmux='tmux -2'
 alias rot13='tr a-zA-Z n-za-mN-ZA-M <<<'
 alias bf='big-files'
 alias gr='git-root'
+
+################################################################################
+# Work Config
+################################################################################
+
+source "${HOME}/.zsh/work.conf"
