@@ -256,6 +256,7 @@ alias rot13='tr a-zA-Z n-za-mN-ZA-M <<<'
 alias bf='big-files'
 alias gr='git-root'
 alias grep='grep --color=auto'
+alias agu='sudo apt-get update && sudo apt-get -y dist-upgrade'
 
 ################################################################################
 # Work Config
