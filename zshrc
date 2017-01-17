@@ -262,4 +262,4 @@ alias agu='sudo apt-get update && sudo apt-get -y dist-upgrade'
 # Work Config
 ################################################################################
 
-source "${HOME}/.zsh/work.conf"
+source "${HOME}/.zsh/work"
