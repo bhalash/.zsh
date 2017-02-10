@@ -157,15 +157,6 @@ plugins=(git github history-substring-search)
 autoload -Uz compinit && compinit -u
 
 ################################################################################
-# Rbenv Init
-################################################################################
-
-if type rbenv > /dev/null; then
-    eval "$(rbenv init -)"
-    path=("$HOME/.rbenv/bin" $path)
-fi
-
-################################################################################
 # Node.js Init
 ################################################################################
 
@@ -263,3 +254,5 @@ alias agu='sudo apt-get update && sudo apt-get -y dist-upgrade'
 ################################################################################
 
 source "${HOME}/.zsh/work"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
