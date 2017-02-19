@@ -253,6 +253,5 @@ alias agu='sudo apt-get update && sudo apt-get -y dist-upgrade'
 # Work Config
 ################################################################################
 
-source "${HOME}/.zsh/work"
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+source "${HOME}/.zsh/work.conf"
+export PATH="${PATH}:${HOME}/.rvm/bin"
