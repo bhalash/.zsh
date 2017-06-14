@@ -55,7 +55,7 @@ fi
 # Wrap $1 in a given color, with a fallback to color 15 (white).
 #
 
-user-prompt-color() {
+function user-prompt-color {
     echo "%F{${2:-15}}${1}%f"
 }
 
@@ -63,7 +63,7 @@ user-prompt-color() {
 # Username prompt.
 #
 
-user-prompt() {
+function user-prompt {
     USER_PROMPT=$(user-prompt-color '%n' ${1:-246})
 
     if [[ $(id -u) == 0 ]]; then
@@ -77,7 +77,7 @@ user-prompt() {
 # Hostname prompt.
 #
 
-host-prompt() {
+function host-prompt {
     echo $(user-prompt-color '%m' ${1:-246})
 }
 
@@ -85,7 +85,7 @@ host-prompt() {
 # Set vi-style prompt colors.
 #
 
-vi-prompt() {
+function vi-prompt {
     VI_BEFORE=$(user-prompt-color '[' ${1:-246})
     VI_AFTER=$(user-prompt-color ']' ${2:-246})
 
@@ -99,8 +99,8 @@ vi-prompt() {
 # Set prompt for current working directory.
 #
 
-dir-prompt() {
-    DIR_PROMPT=
+function dir-prompt {
+    DIR_PROMPT=''
     echo $(user-prompt-color "%1~" ${1:-246})
 }
 
@@ -108,7 +108,7 @@ dir-prompt() {
 # Bring together all of the above elements for left and right prompts.
 #
 
-mark-prompt() {
+function mark-prompt {
     PROMPT="%B$(vi-prompt) $(user-prompt)@$(host-prompt):$(dir-prompt) $ %b"
     RPROMPT=""
 }
@@ -173,7 +173,7 @@ export HOMEBREW_NO_ANALYTICS=1
 # Bind <tab> to cd Command
 ################################################################################
 
-first-tab() {
+function first-tab {
     if [[ $#BUFFER == 0 ]]; then
         BUFFER="cd "
         CURSOR=3
@@ -190,7 +190,7 @@ bindkey '^I' first-tab
 # cd to Git Project Root Folder
 ################################################################################
 
-git-root() {
+function git-root {
     if $(git rev-parse 2> /dev/null); then
         builtin cd "$(git rev-parse --show-toplevel)"
     else
@@ -202,7 +202,7 @@ git-root() {
 # See n Biggest Files
 ################################################################################
 
-big-files() {
+function big-files {
     count=10
 
     if [[ $1 =~ ^[0-9]+$ ]]; then
@@ -216,7 +216,7 @@ big-files() {
 # Copy the Most Recent File in a Given Directory
 ################################################################################
 
-cp-last() {
+function cp-last {
     if [[ -d "$1" ]]; then
         echo "cd: ${1}: Not a directory"
         exit 1
