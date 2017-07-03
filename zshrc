@@ -178,7 +178,7 @@ PYTHON_SHORT_VERSION=$(python --version 2>&1 | sed -e 's/^.*[[:space:]]//;s/\.[[
 EB_PATH="${HOME}/Library/Python/${PYTHON_SHORT_VERSION}/bin"
 
 if [[ -d $EB_PATH ]]; then
-    path+=("${HOME}/Library/Python/${PYTHON_SHORT_VERSION}/bin")
+    path+=($EB_PATH)
 fi
 
 ################################################################################
