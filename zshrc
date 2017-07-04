@@ -270,6 +270,7 @@ alias bf='big-files'
 alias gr='git-root'
 alias grep='grep --color=auto'
 alias agu='sudo apt-get update && sudo apt-get -y dist-upgrade'
+alias vi='vim'
 
 ################################################################################
 # Work Config
