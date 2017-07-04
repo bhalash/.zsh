@@ -175,8 +175,8 @@ path+=('/usr/local/lib/node_modules')
 # SEE: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html?icmpid=docs_elasticbeanstalk_console
 
 function add-eb-path {
-    PYTHON_SHORT_VERSION=$(python --version 2>&1 | sed -E 's/^.*[[:space:]]//;s/\.[[:digit:]]{2,}//')
-    EB_PATH="${HOME}/Library/Python/${PYTHON_SHORT_VERSION}/bin"
+    local PYTHON_SHORT_VERSION=$(python --version 2>&1 | sed -E 's/^.*[[:space:]]//;s/\.[[:digit:]]{2,}//')
+    local EB_PATH="${HOME}/Library/Python/${PYTHON_SHORT_VERSION}/bin"
 
     if [[ -d $EB_PATH ]]; then
         path+=($EB_PATH)
