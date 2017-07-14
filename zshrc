@@ -164,28 +164,6 @@ autoload -Uz compinit && compinit -u
 path+=('/usr/local/lib/node_modules')
 
 ################################################################################
-# Elastic Beanstalk Init
-################################################################################
-
-# NOTE: Check installed path per os.
-# TODO: Add per OS path.
-# NOTE: AWS instructions are bogus for macOS and zsh: absolute path should be
-#       used. Relative paths are ignored.
-#
-# SEE: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html?icmpid=docs_elasticbeanstalk_console
-
-function add-eb-path {
-    local PYTHON_SHORT_VERSION=$(python --version 2>&1 | sed -E 's/^.*[[:space:]]//;s/\.[[:digit:]]{2,}//')
-    local EB_PATH="${HOME}/Library/Python/${PYTHON_SHORT_VERSION}/bin"
-
-    if [[ -d $EB_PATH ]]; then
-        path+=($EB_PATH)
-    fi
-}
-
-add-eb-path
-
-################################################################################
 # Opt out of Homebrew Tracking
 ################################################################################
 
