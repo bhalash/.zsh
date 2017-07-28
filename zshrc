@@ -203,13 +203,13 @@ function git-root {
 ################################################################################
 
 function big-files {
-    count=10
+    local COUNT=10
 
     if [[ $1 =~ ^[0-9]+$ ]]; then
-        count=$1
+        local COUNT=$1
     fi
 
-    du -axh | sort -n | tail -n $count | sort -r
+    du -axh | sort -nr | head -n $COUNT
 }
 
 ################################################################################
