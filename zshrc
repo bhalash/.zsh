@@ -250,6 +250,7 @@ alias grep='grep --color=auto'
 alias agu='sudo apt-get update && sudo apt-get -y dist-upgrade'
 alias vi='vim'
 alias fuck='sudo !!'
+alias shit="printf '\e[?25h'"
 
 ################################################################################
 # Work Config
