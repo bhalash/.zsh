@@ -48,6 +48,20 @@ if [[ -z $TMPDIR ]] || [[ ! -d "${TMPDIR}" ]]; then
 fi
 
 ################################################################################
+# Test Executable Existence
+################################################################################
+
+function _has {
+    for PROGRAM in "$@"; do
+        if [[ $(which $PROGRAM > /dev/null 2>&1; echo $?) != 0 ]]; then
+            return 1
+        fi
+    done
+
+    return 0
+}
+
+################################################################################
 # Prompt
 ################################################################################
 
@@ -258,7 +272,28 @@ alias shit="printf '\e[?25h'"
 export GREP_OPTIONS='--exclude-dir=.git'
 
 ################################################################################
-# Work Config
+# FZF Setup
+################################################################################
+
+# fzf via Homebrew
+if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
+  source /usr/local/opt/fzf/shell/key-bindings.zsh
+  source /usr/local/opt/fzf/shell/completion.zsh
+fi
+
+# fzf + ag configuration
+if _has fzf ag; then
+  export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_DEFAULT_OPTS='
+  --color fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108
+  --color info:108,prompt:109,spinner:108,pointer:168,marker:168
+  '
+fi
+
+################################################################################
+# Inject Work Configfile
 ################################################################################
 
 if [[ -f "${HOME}/.zsh/work.conf" ]]; then
