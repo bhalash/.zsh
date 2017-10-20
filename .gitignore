@@ -1,5 +1,9 @@
-/*
+# OS and Editor Junk
 
-!zshrc
-!LICENSE
-!README.md
+**/*.swp
+**/.DS_STORE
+**/tags
+
+# Other Files
+
+work.conf
