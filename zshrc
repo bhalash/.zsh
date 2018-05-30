@@ -293,11 +293,7 @@ if _has fzf ag; then
 fi
 
 ################################################################################
-# Inject Work Configfile
+# Load rvm
 ################################################################################
-
-if [[ -f "${HOME}/.zsh/work.conf" ]]; then
-    source "${HOME}/.zsh/work.conf"
-fi
 
 export PATH="${PATH}:${HOME}/.rvm/bin"
