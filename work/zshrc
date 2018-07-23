@@ -43,7 +43,7 @@ function -set-project-folder-title {
     elif [[ $PWD =~ "Projects/myd4h" ]]; then
         set-window-title 'MyD4h'
     else
-        set-window-title "${whoami}@${hostname}"
+        set-window-title $(basename $PWD)
     fi
 }
 
