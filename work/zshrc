@@ -46,3 +46,4 @@ function -set-project-folder-title {
 }
 
 chpwd_functions=(${chpwd_functions[@]} "-set-project-folder-title")
+-set-project-folder-title
