@@ -32,3 +32,17 @@ path+=($ANDROID_HOME/{tools,platform-tools})
 
 export GRADLE_VERSION='4.4'
 export CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL="https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip"
+
+################################################################################
+# cd => Window Title Hook
+################################################################################
+
+function -set-project-folder-title {
+    if [[ $PWD =~ "Projects/sparklepony" ]]; then
+        set-window-title 'Sparklepony'
+    elif [[ $PWD =~ "Projects/myd4h" ]]; then
+        set-window-title 'MyD4h'
+    fi
+}
+
+chpwd_functions=(${chpwd_functions[@]} "-set-project-folder-title")
