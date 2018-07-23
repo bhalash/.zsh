@@ -40,8 +40,8 @@ export CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL="https://services.gradle.org/dist
 function -set-project-folder-title {
     if [[ $PWD =~ "Projects/sparklepony" ]]; then
         set-window-title 'Sparklepony'
-    elif [[ $PWD =~ "Projects/wigwam" ]]; then
-        set-window-title 'Wigwam'
+    elif [[ $PWD =~ "Projects/gandalf" ]]; then
+        set-window-title 'MyD4h'
     else
         set-window-title $(basename $PWD)
     fi
