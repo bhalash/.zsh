@@ -51,7 +51,7 @@ fi
 # Test Executable Existence
 ################################################################################
 
-function _has {
+function is_installed {
     for PROGRAM in "$@"; do
         if [[ $(which $PROGRAM > /dev/null 2>&1; echo $?) != 0 ]]; then
             return 1
@@ -263,8 +263,17 @@ alias bf='big-files'
 alias gr='git-root'
 alias grep='grep --color=auto --exclude-dir=".git"'
 alias agu='sudo apt-get update && sudo apt-get -y dist-upgrade'
-alias vi='vim'
 alias shit="printf '\e[?25h'"
+
+################################################################################
+# Preferential Vim Version
+################################################################################
+
+if is_installed nvim; then
+    alias vim='nvim'
+fi
+
+alias vi='vim'
 
 ################################################################################
 # Grep Configuration
@@ -294,7 +303,7 @@ if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
 fi
 
 # fzf + ag configuration
-if _has fzf ag; then
+if is_installed fzf ag; then
   export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
