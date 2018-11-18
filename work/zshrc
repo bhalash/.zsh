@@ -41,7 +41,7 @@ function -set-project-folder-title {
     if [[ $PWD =~ "Projects/sparklepony" ]]; then
         set-window-title 'Sparklepony'
     elif [[ $PWD =~ "Projects/gandalf" ]]; then
-        set-window-title 'MyD4h'
+        set-window-title 'MyD4H'
     else
         set-window-title $(basename $PWD)
     fi

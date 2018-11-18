@@ -34,7 +34,7 @@ bindkey -v
 ################################################################################
 
 if [[ -z "$EDITOR" ]]; then
-    export EDITOR='vim'
+    export EDITOR='nvim'
 fi
 
 ################################################################################
@@ -51,7 +51,7 @@ fi
 # Test Executable Existence
 ################################################################################
 
-function _has {
+function is_installed {
     for PROGRAM in "$@"; do
         if [[ $(which $PROGRAM > /dev/null 2>&1; echo $?) != 0 ]]; then
             return 1
@@ -263,8 +263,17 @@ alias bf='big-files'
 alias gr='git-root'
 alias grep='grep --color=auto --exclude-dir=".git"'
 alias agu='sudo apt-get update && sudo apt-get -y dist-upgrade'
-alias vi='vim'
 alias shit="printf '\e[?25h'"
+
+################################################################################
+# Preferential Vim Version
+################################################################################
+
+if is_installed nvim; then
+    alias vim='nvim'
+fi
+
+alias vi='vim'
 
 ################################################################################
 # Grep Configuration
@@ -287,14 +296,14 @@ fi
 # FZF Setup
 ################################################################################
 
+# fzf via Homebrew
 if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
-    # fzf via Homebrew
   source /usr/local/opt/fzf/shell/key-bindings.zsh
   source /usr/local/opt/fzf/shell/completion.zsh
 fi
 
-if _has fzf ag; then
-    # fzf + ag configuration
+# fzf + ag configuration
+if is_installed fzf ag; then
   export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -302,9 +311,6 @@ if _has fzf ag; then
   --color fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108
   --color info:108,prompt:109,spinner:108,pointer:168,marker:168
   '
-elif [[ -f ~/.fzf.zsh ]]; then
-    # Ubuntu
-    source ~/.fzf.zsh
 fi
 
 ################################################################################
