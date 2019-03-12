@@ -10,27 +10,21 @@ path+=("${HOME}/.rvm/bin")
 
 export NVM_DIR="${HOME}/.nvm"
 
-[ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"
-[ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion"
-
-################################################################################
-# Add sphp to $PATH
-################################################################################
-
-path+=("${HOME}/Projects/sphp-osx")
+[ -s "${NVM_DIR}/nvm.sh" ] && source "${NVM_DIR}/nvm.sh"
+[ -s "${NVM_DIR}/bash_completion" ] && source "${NVM_DIR}/bash_completion"
 
 ################################################################################
 # Set Android Tools Path
 ################################################################################
 
-export ANDROID_HOME="${HOME}/Library/Android/sdk"
-path+=($ANDROID_HOME/{tools,platform-tools})
+export ANDROID_SDK_ROOT="${HOME}/Library/Android/sdk"
+path+=($ANDROID_SDK_ROOT/{emulator,tools})
 
 ################################################################################
 # Set Gradle Version Used
 ################################################################################
 
-export GRADLE_VERSION='4.4'
+export GRADLE_VERSION='4.10.1'
 export CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL="https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip"
 
 ################################################################################
