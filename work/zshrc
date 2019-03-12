@@ -18,7 +18,9 @@ export NVM_DIR="${HOME}/.nvm"
 ################################################################################
 
 export ANDROID_SDK_ROOT="${HOME}/Library/Android/sdk"
-path+=($ANDROID_SDK_ROOT/{emulator,tools})
+export ANDROID_HOME=$ANDROID_SDK_ROOT
+
+path+=($ANDROID_SDK_ROOT/{emulator,platform-tools,tools})
 
 ################################################################################
 # Set Gradle Version Used
