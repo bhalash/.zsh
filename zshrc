@@ -261,6 +261,7 @@ alias tmux='tmux -2'
 alias rot13='tr a-zA-Z n-za-mN-ZA-M <<<'
 alias bf='big-files'
 alias gr='git-root'
+alias grep='grep --color=auto --exclude-dir=".git"'
 alias agu='sudo apt-get update && sudo apt-get -y dist-upgrade'
 alias shit="printf '\e[?25h'"
 
@@ -273,12 +274,6 @@ if is_installed nvim; then
 fi
 
 alias vi='vim'
-
-################################################################################
-# Grep Configuration
-################################################################################
-
-export GREP_OPTIONS='--exclude-dir=.git'
 
 ################################################################################
 # Source z if Installed
